@@ -1,12 +1,10 @@
-# Library for numerical data sets in WL file format
+# WLdat library: A set of C ++ functions to handle numeric data of files in Wolfram Language package source format
 
 <p align="right"><a href="README.pt-br.md">Leia em português (br)</a></p>
 
 A set of C++ functions for handling numeric data in three dimensions from files in [Wolfram Language package source format (WL)](https://reference.wolfram.com/language/ref/format/WL.html).
 
-WL files have a structure in which data are separated by commas and arrays are grouped by braces.
-
-It is very useful for importing and exporting tensors, matrices, tables, numeric datasets and so on.
+WL files have a structure in which data are separated by commas and arrays are grouped by braces. Such format is very useful for importing and exporting tensors, matrices, tables, numeric datasets and so on.
 
 ## Available functions
 
@@ -15,7 +13,7 @@ It is very useful for importing and exporting tensors, matrices, tables, numeric
 void wldat_getsize( std::string wldat_path, int &imax, int &jmax, int &kmax )
 ```
 
-- Import a WL file containing a 3D set of numeric data and store the values in a one-dimensional array
+- Import a WL file containing a 3D set of numeric data and store the values in an one-dimensional array
 ```
 template<typename T>
 void wldat_import( std::string wldat_path, T * data_array, int imax, int jmax, int kmax )
@@ -35,6 +33,11 @@ void wldat_export( std::string wldat_path, std::complex<T> * data_array, int ima
 
 The library is in a header-only library style, i.e., there is nothing to build, you only have to include the <a href="wldat-library.hpp">*wldat-library.hpp*</a> file into your project.
 
+
+## Authorship
+
+The codes and routines were developed and are updated by <a href="https://www.researchgate.net/profile/Jhonas-de-Sarro">Jhonas O. de Sarro</a> ([@jodesarro]( https://github.com/jodesarro )).
+
 ## Licensing
 
-This project is protected under <a href="LICENSE">MIT License</a> and [@jodesarro]( https://github.com/jodesarro ) is the principal author.
+This project is protected under <a href="LICENSE">MIT License</a>. 
