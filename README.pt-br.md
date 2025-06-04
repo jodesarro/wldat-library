@@ -1,32 +1,70 @@
-# Biblioteca WLdat: um conjunto de funções C++ para lidar com dados numéricos de arquivos no formato fonte do pacote Wolfram Language
+# Biblioteca para conjuntos 3D de dados numéricos em formato de arquivo WL
 
-<p align="right"><a href="README.md">Read in English</a></p>
+<p align="right"><a href="https://github.com/jodesarro/wldat-library/blob/master/README.md">Read this in English</a></p>
 
 Um conjunto de funções em C++ para lidar com dados numéricos em três dimensões de arquivos em [Wolfram Language package source format (WL)](https://reference.wolfram.com/language/ref/format/WL.html).
 
-Os arquivos WL têm uma estrutura na qual os dados são separados por vírgulas e as matrizes são agrupadas por chaves. É um formato muito útil para importar e exportar tensores, matrizes, tabelas, conjuntos de dados numéricos e assim por diante.
+Os arquivos WL têm uma estrutura na qual os dados são separados por vírgulas e as matrizes são agrupadas por chaves.
+
+É muito útil para importar e exportar tensores, matrizes, tabelas, conjuntos de dados numéricos e assim por diante.
 
 ## Funções disponíveis
+
+### Leitura e importação de dados
 
 - Obter as dimensões de um arquivo WL contendo um conjunto 3D de dados numéricos
 ```
 void wldat_getsize( std::string wldat_path, int &imax, int &jmax, int &kmax )
 ```
 
-- Importar um arquivo WL contendo um conjunto 3D de dados numéricos e armazenar os valores em um array de uma dimensão
+- Importar um arquivo WL contendo um conjunto 3D de dados numéricos e armazenar os valores em um *array* de uma dimensão
 ```
 template<typename T>
 void wldat_import( std::string wldat_path, T * data_array, int imax, int jmax, int kmax )
 ```
 
-- Exportar um array de uma dimensão contendo um conjunto 3D de dados numéricos para um arquivo WL 
+- Importar um arquivo WL contendo um conjunto 3D de dados numéricos complexos e armazenar os valores em um *complex array* de uma dimensão
+```
+template<typename T>
+void wldat_import( std::string wldat_path, std::complex<T> * data_array, int imax, int jmax, int kmax )
+```
+
+- Importar um arquivo WL contendo um conjunto 3D de dados numéricos e armazenar os valores em um *vector* de três dimensões
+```
+template<typename T>
+void wldat_import( std::string wldat_path, std::vector<std::vector<std::vector<T>>> &data_vector, int imax, int jmax, int kmax )
+```
+
+- Importar um arquivo WL contendo um conjunto 3D de dados numéricos complexos e armazenar os valores em um *complex vector* de três dimensões
+```
+template<typename T>
+void wldat_import( std::string wldat_path, std::vector<std::vector<std::vector<std::complex<T>>>> &data_vector, int imax, int jmax, int kmax )
+```
+
+### Exportação de dados
+
+- Exportar um *array* de uma dimensão contendo um conjunto 3D de dados numéricos para um arquivo WL 
 ```
 template<typename T>
 void wldat_export( std::string wldat_path, T * data_array, int imax, int jmax, int kmax, int out_precision = 0, bool out_scientific = false )
 ```
+
+- Exportar um *complex array* de uma dimensão contendo um conjunto 3D de dados numéricos complexos para um arquivo WL 
 ```
 template<typename T>
 void wldat_export( std::string wldat_path, std::complex<T> * data_array, int imax, int jmax, int kmax, int out_precision = 0, bool out_scientific = false )
+```
+
+- Exportar um *vector* de três dimensões contendo um conjunto 3D de dados numéricos para um arquivo WL 
+```
+template<typename T>
+void wldat_export( std::string wldat_path, std::vector<std::vector<std::vector<T>>> &data_vector, int imax, int jmax, int kmax, int out_precision = 0, bool out_scientific = false )
+```
+
+- Exportar um *complex vector* de três dimensões contendo um conjunto 3D de dados numéricos complexos para um arquivo WL 
+```
+template<typename T>
+void wldat_export( std::string wldat_path, std::vector<std::vector<std::vector<std::complex<T>>>> &data_vector, int imax, int jmax, int kmax, int out_precision = 0, bool out_scientific = false )
 ```
 
 ## Como usar
